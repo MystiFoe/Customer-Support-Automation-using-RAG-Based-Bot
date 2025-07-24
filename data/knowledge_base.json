@@ -1,0 +1,105 @@
+{
+  "documents": [
+    {
+      "title": "Account Login Issues",
+      "content": "If you're having trouble logging into your account, please try these steps: 1) Clear your browser cache and cookies, 2) Reset your password using the 'Forgot Password' link, 3) Ensure you're using the correct email address, 4) Check if Caps Lock is enabled, 5) Try logging in from an incognito/private browser window. If issues persist, contact our support team.",
+      "category": "Account"
+    },
+    {
+      "title": "Password Reset Process",
+      "content": "To reset your password: 1) Go to the login page and click 'Forgot Password', 2) Enter your registered email address, 3) Check your email for a reset link (also check spam folder), 4) Click the link and create a new password, 5) Your new password must be at least 8 characters with one uppercase letter, one number, and one special character. Password reset links expire after 24 hours.",
+      "category": "Account"
+    },
+    {
+      "title": "Subscription Plans and Pricing",
+      "content": "We offer three subscription tiers: Basic ($9.99/month) includes core features and email support; Professional ($19.99/month) includes advanced features, priority support, and API access; Enterprise ($49.99/month) includes all features, dedicated support, custom integrations, and SLA guarantees. All plans include a 14-day free trial and can be cancelled anytime.",
+      "category": "Billing"
+    },
+    {
+      "title": "Payment Methods and Billing",
+      "content": "We accept major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for annual plans. Billing occurs automatically based on your subscription cycle. You can update payment methods in your account settings. For billing inquiries or invoice copies, contact our billing department. Failed payments will result in account suspension after 7 days.",
+      "category": "Billing"
+    },
+    {
+      "title": "Refund and Cancellation Policy",
+      "content": "You can cancel your subscription anytime from your account settings. Cancellations take effect at the end of your current billing period. We offer a 30-day money-back guarantee for new subscribers. Refunds are processed within 5-7 business days. Pro-rated refunds are available for annual subscriptions cancelled within the first 90 days.",
+      "category": "Billing"
+    },
+    {
+      "title": "API Integration Guide",
+      "content": "Our API allows developers to integrate our services into their applications. API access requires a Professional or Enterprise subscription. Authentication uses API keys found in your dashboard. Rate limits apply: 1000 requests/hour for Professional, 5000 requests/hour for Enterprise. Full API documentation is available at docs.example.com/api. SDK libraries are available for Python, JavaScript, and PHP.",
+      "category": "Technical"
+    },
+    {
+      "title": "Data Export and Import",
+      "content": "You can export your data anytime in JSON, CSV, or XML formats from the Data Management section. Exports include all your content, settings, and metadata. Data imports are supported for CSV and JSON formats. Large datasets may take several minutes to process. Imported data undergoes validation checks before being added to your account.",
+      "category": "Technical"
+    },
+    {
+      "title": "Mobile App Features",
+      "content": "Our mobile app is available for iOS and Android devices. Features include: real-time synchronization with web account, offline mode for viewing data, push notifications for important updates, biometric authentication support, and optimized interface for tablets. Download from App Store or Google Play. Minimum requirements: iOS 12+ or Android 8+.",
+      "category": "Mobile"
+    },
+    {
+      "title": "Security and Privacy",
+      "content": "We implement enterprise-grade security measures including SSL encryption, two-factor authentication, regular security audits, and SOC 2 compliance. Your data is stored in encrypted databases with regular backups. We never share personal information with third parties without consent. For detailed privacy practices, review our Privacy Policy. Report security concerns to security@example.com.",
+      "category": "Security"
+    },
+    {
+      "title": "Browser Compatibility",
+      "content": "Our platform supports modern browsers: Chrome 90+, Firefox 88+, Safari 14+, and Edge 90+. JavaScript must be enabled for full functionality. We recommend keeping browsers updated for optimal performance and security. Some features may have limited support in older browsers. For best experience, use Chrome or Firefox on desktop devices.",
+      "category": "Technical"
+    },
+    {
+      "title": "File Upload Limitations",
+      "content": "File upload limits vary by subscription: Basic (10MB per file, 100MB total), Professional (50MB per file, 1GB total), Enterprise (100MB per file, 10GB total). Supported formats include PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, TXT, CSV, JPG, PNG, GIF. Files are scanned for viruses and malware. Processing time depends on file size and type.",
+      "category": "Technical"
+    },
+    {
+      "title": "Team Collaboration Features",
+      "content": "Professional and Enterprise plans include team collaboration tools: shared workspaces, real-time editing, comment system, user permissions management, activity tracking, and team analytics. Invite team members via email with customizable access levels (Viewer, Editor, Admin). Maximum team size: Professional (10 users), Enterprise (unlimited).",
+      "category": "Features"
+    },
+    {
+      "title": "Backup and Data Recovery",
+      "content": "Automatic backups are performed daily for all accounts. Backup retention: Basic (7 days), Professional (30 days), Enterprise (90 days). You can restore data from any backup point through the Data Recovery section. Point-in-time recovery is available for Enterprise customers. Critical data loss scenarios receive priority support response within 2 hours.",
+      "category": "Technical"
+    },
+    {
+      "title": "Notification Settings",
+      "content": "Customize notifications in your account preferences: email notifications for account activity, system updates, billing reminders, and security alerts. Mobile push notifications available for app users. Set quiet hours to pause non-critical notifications. Notification frequency options: immediate, daily digest, or weekly summary. Critical security notifications cannot be disabled.",
+      "category": "Settings"
+    },
+    {
+      "title": "Performance Optimization",
+      "content": "To optimize performance: use supported browsers, clear cache regularly, close unnecessary browser tabs, ensure stable internet connection, and avoid uploading very large files during peak hours. Performance issues may indicate browser compatibility problems or network connectivity issues. Contact support if performance doesn't improve after troubleshooting.",
+      "category": "Technical"
+    },
+    {
+      "title": "Account Deletion Process",
+      "content": "To permanently delete your account: 1) Cancel all active subscriptions, 2) Export any data you want to keep, 3) Go to Account Settings > Delete Account, 4) Confirm deletion via email verification, 5) Account data is permanently removed after 30 days. This action cannot be undone. Some data may be retained for legal compliance purposes.",
+      "category": "Account"
+    },
+    {
+      "title": "Third-Party Integrations",
+      "content": "We support integrations with popular tools: Google Workspace, Microsoft 365, Slack, Zapier, Salesforce, and HubSpot. Integration setup requires admin permissions and may need API credentials from third-party services. Some integrations are available only on Professional/Enterprise plans. Full integration list and setup guides available in our Help Center.",
+      "category": "Features"
+    },
+    {
+      "title": "System Maintenance Windows",
+      "content": "Scheduled maintenance occurs monthly on the second Sunday from 2-4 AM EST. During maintenance, services may be temporarily unavailable. We provide 48-hour advance notice via email and status page. Emergency maintenance may occur with minimal notice. Status updates are posted at status.example.com. Critical issues receive immediate attention outside maintenance windows.",
+      "category": "System"
+    },
+    {
+      "title": "Contact Support Channels",
+      "content": "Multiple support options available: Email support (support@example.com) with 24-hour response time, Live chat (weekdays 9 AM - 6 PM EST) for immediate assistance, Phone support (1-800-SUPPORT) for Enterprise customers, and Help Center with searchable knowledge base. Premium support includes dedicated account managers and priority response times.",
+      "category": "Support"
+    },
+    {
+      "title": "Feature Request Process",
+      "content": "We welcome feature requests from our users. Submit requests through: 1) Feature Request form in your dashboard, 2) Email to features@example.com, 3) Community forum for discussion and voting. Include detailed use cases and expected benefits. Popular requests are reviewed quarterly for product roadmap inclusion. Enterprise customers can request custom feature development.",
+      "category": "Support"
+    }
+  ],
+  "last_updated": "2025-07-24"
+}
