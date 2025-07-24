@@ -9,7 +9,6 @@ import time
 # Configure page
 st.set_page_config(
     page_title="AI Customer Support Bot",
-    page_icon="🤖",
     layout="wide"
 )
 
@@ -24,7 +23,7 @@ if "metrics" not in st.session_state:
 
 # Main header
 st.title("🤖 AI Customer Support Bot")
-st.markdown("*Powered by RAG (Retrieval-Augmented Generation) Technology*")
+st.markdown("<span style='font-size:16px; color:#333;'>Powered by Retrieval-Augmented Generation (RAG) Technology</span>", unsafe_allow_html=True)
 
 # Sidebar for metrics and controls
 with st.sidebar:
@@ -106,7 +105,7 @@ if prompt := st.chat_input("Ask me anything about our products or services..."):
     
     # Generate assistant response
     with st.chat_message("assistant"):
-        with st.spinner("Thinking..."):
+        with st.spinner("Generating response..."):
             start_time = time.time()
             
             try:
@@ -131,7 +130,7 @@ if prompt := st.chat_input("Ask me anything about our products or services..."):
                     "metadata": metadata
                 })
                 
-                # Update metrics
+                error_message = f"We are experiencing technical difficulties. Please try again later. Error: {str(e)}"
                 st.session_state.metrics.add_interaction(
                     query=prompt,
                     response=response_data["answer"],
@@ -152,7 +151,7 @@ if prompt := st.chat_input("Ask me anything about our products or services..."):
 # Footer information
 st.divider()
 st.markdown("""
-<div style='text-align: center; color: #666;'>
+<div style='text-align: center; color: #444;'>
     <p><strong>AI Customer Support Bot v1.0</strong></p>
     <p>This bot uses Retrieval-Augmented Generation (RAG) to provide accurate, context-aware responses based on our knowledge base.</p>
     <p>For complex issues, you may be transferred to a human agent.</p>
