@@ -1,40 +1,43 @@
 import streamlit as st
 import json
 import datetime
-import pandas as pd
-from simple_rag_system import SimpleRAGSystem
-from src.metrics import MetricsTracker
 import time
+from src.rag_system import RAGSystem
+from src.metrics import MetricsTracker
+from src.logger import get_logger
+from config.settings import config
+
+logger = get_logger(__name__)
 
 # Configure page
 st.set_page_config(
-    page_title="AI Customer Support Bot",
-    layout="wide"
+    page_title=config.ui.page_title,
+    layout=config.ui.layout,
+    initial_sidebar_state="expanded"
 )
 
 # Initialize session state
 if "messages" not in st.session_state:
     st.session_state.messages = []
 if "rag_system" not in st.session_state:
-    with st.spinner("Initializing AI Support System..."):
-        st.session_state.rag_system = SimpleRAGSystem()
+    with st.spinner("Loading AI Support System..."):
+        st.session_state.rag_system = RAGSystem(config.knowledge_base_path)
 if "metrics" not in st.session_state:
     st.session_state.metrics = MetricsTracker()
 
-# Main header
-st.title("🤖 AI Customer Support Bot")
-st.markdown("<span style='font-size:16px; color:#333;'>Powered by Retrieval-Augmented Generation (RAG) Technology</span>", unsafe_allow_html=True)
+# Header
+st.title("AI Customer Support")
+st.markdown("*Professional support powered by AI technology*")
 
-# Sidebar for metrics and controls
+# Sidebar - Metrics Dashboard
 with st.sidebar:
-    st.header("📊 Performance Metrics")
+    st.header("Performance Dashboard")
     
-    # Display current metrics
     metrics_data = st.session_state.metrics.get_current_metrics()
     
     col1, col2 = st.columns(2)
     with col1:
-        st.metric("Response Accuracy", f"{metrics_data['accuracy']:.1f}%")
+        st.metric("Accuracy", f"{metrics_data['accuracy']:.1f}%")
         st.metric("Total Queries", metrics_data['total_queries'])
     
     with col2:
@@ -43,16 +46,16 @@ with st.sidebar:
     
     st.divider()
     
-    # System status
-    st.header("🔧 System Status")
-    st.success("✅ RAG System: Online")
-    st.success("✅ Knowledge Base: Loaded")
-    st.success("✅ OpenAI API: Connected")
+    # System Status
+    st.subheader("System Status")
+    st.success("AI System: Online")
+    st.success("Knowledge Base: Loaded")
+    st.success("API: Connected")
     
     st.divider()
     
-    # Export conversation
-    st.header("💾 Export Options")
+    # Export Options
+    st.subheader("Export Data")
     if st.button("Export Conversation"):
         if st.session_state.messages:
             conversation_data = {
@@ -73,30 +76,30 @@ with st.sidebar:
         st.session_state.messages = []
         st.rerun()
 
-# Main chat interface
-st.header("💬 Customer Support Chat")
+# Main Chat Interface
+st.subheader("Customer Support Chat")
 
 # Display chat messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
         
-        # Show metadata for assistant messages
+        # Show response details for assistant messages
         if message["role"] == "assistant" and "metadata" in message:
-            with st.expander("View Response Details"):
+            with st.expander("Response Details"):
                 metadata = message["metadata"]
                 st.write(f"**Response Time:** {metadata['response_time']:.2f}s")
                 st.write(f"**Confidence Score:** {metadata['confidence']:.2f}")
                 st.write(f"**Sources Used:** {len(metadata['sources'])}")
                 
                 if metadata['sources']:
-                    st.write("**Knowledge Base Sources:**")
+                    st.write("**Knowledge Sources:**")
                     for i, source in enumerate(metadata['sources'][:3], 1):
-                        st.write(f"{i}. {source['title']} (Relevance: {source['score']:.2f})")
+                        st.write(f"{i}. {source['title']} (Score: {source['score']:.2f})")
 
 # Chat input
-if prompt := st.chat_input("Ask me anything about our products or services..."):
-    # Add user message to chat history
+if prompt := st.chat_input("How can I help you today?"):
+    # Add user message
     st.session_state.messages.append({"role": "user", "content": prompt})
     
     # Display user message
@@ -123,14 +126,14 @@ if prompt := st.chat_input("Ask me anything about our products or services..."):
                     "sources": response_data["sources"]
                 }
                 
-                # Add assistant message to chat history
+                # Add to chat history
                 st.session_state.messages.append({
                     "role": "assistant", 
                     "content": response_data["answer"],
                     "metadata": metadata
                 })
                 
-                error_message = f"We are experiencing technical difficulties. Please try again later. Error: {str(e)}"
+                # Track metrics
                 st.session_state.metrics.add_interaction(
                     query=prompt,
                     response=response_data["answer"],
@@ -139,21 +142,28 @@ if prompt := st.chat_input("Ask me anything about our products or services..."):
                     sources_count=len(response_data["sources"])
                 )
                 
+                logger.info("Successfully processed query with %.2f confidence", 
+                           response_data["confidence"])
+                
             except Exception as e:
-                error_message = f"I apologize, but I'm experiencing technical difficulties. Please try again later. Error: {str(e)}"
+                error_message = "I apologize, but I'm experiencing technical difficulties. Please try again later."
                 st.error(error_message)
+                logger.error("Error processing query: %s", str(e))
                 
                 st.session_state.messages.append({
                     "role": "assistant", 
                     "content": error_message
                 })
 
-# Footer information
+# Footer
 st.divider()
 st.markdown("""
-<div style='text-align: center; color: #444;'>
-    <p><strong>AI Customer Support Bot v1.0</strong></p>
-    <p>This bot uses Retrieval-Augmented Generation (RAG) to provide accurate, context-aware responses based on our knowledge base.</p>
-    <p>For complex issues, you may be transferred to a human agent.</p>
+<div style='text-align: center; color: #666; padding: 20px;'>
+    <strong>AI Customer Support System v1.0</strong><br>
+    Professional support powered by advanced AI technology<br>
+    For complex issues, connect with our human support team
 </div>
 """, unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    logger.info("Starting AI Customer Support System")

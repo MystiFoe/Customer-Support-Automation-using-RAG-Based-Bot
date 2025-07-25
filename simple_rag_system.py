@@ -3,7 +3,7 @@ import json
 from typing import List, Dict, Any
 import re
 from openai import OpenAI
-from knowledge_base import KnowledgeBase
+from src.knowledge_base import KnowledgeBase
 
 class SimpleRAGSystem:
     def __init__(self):
